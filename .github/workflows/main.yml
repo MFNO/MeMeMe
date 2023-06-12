@@ -8,10 +8,27 @@ jobs:
     steps:
         - uses: actions/checkout@main
         - uses: keithweaver/aws-s3-github-action@v1.0.0
+          name: Copy Single File
           with:
             command: cp
-            source: ./dist
-            destination: s3://me-me-me-bucket/
+            source: ./dist/index.html
+            destination: s3://me-me-me-bucket/index.html
             aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws_region: us-east-1
+        - name: Verify File
+          run: |
+            echo "Verify file"
+        - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
+          name: Copy Folder
+          with:
+            command: cp
+            source: ./dist/assets/
+            destination: s3://me-me-me-bucket/assets/
+            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws_region: us-east-1
+            flags: --recursive
+        - name: Verify Folder
+          run: |
+            echo "Verify folder"
