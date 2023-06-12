@@ -1,8 +1,16 @@
-- uses: keithweaver/aws-s3-github-action@main
-  with:
-    command: cp
-    source: ./build
-    destination: s3://me-me-me-bucket/
-    aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    aws_region: us-east-1
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: keithweaver/aws-s3-github-action@main
+          with:
+            command: cp
+            source: ./build
+            destination: s3://me-me-me-bucket/
+            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws_region: us-east-1
