@@ -22,7 +22,7 @@ function App() {
         <div className="grid column">
           <h1>Projects</h1>
           <a href="https://dhipbrbcoutdm.cloudfront.net">Chore Mate</a>
-          <a href="https://cruxroute.com/">Crux Route</a>
+          <a href="https://cruxroute.com/">Crux test Route</a>
         </div>
       </div>
     </>
