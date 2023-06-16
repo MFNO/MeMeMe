@@ -1,11 +1,41 @@
 locals {
   s3_origin_id = "S3-origin-react-app"
+  certificate_arn = "arn:aws:acm:us-east-1:050044652572:certificate/a9fb4ae3-cfe1-443e-baed-7e15f9a0c9b9"
 }
 
 resource "aws_cloudfront_origin_access_identity" "oai" {
   comment = "me-me-me OAI"
 }
 
+data "aws_route53_zone" "manufourneau" {
+  name = "manufourneau.com"
+  private_zone = false
+}
+
+
+resource "aws_route53_record" "cf_dns" {
+  zone_id = data.aws_route53_zone.manufourneau.zone_id
+  name    = "www"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cf_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.cf_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cf_dns_short" {
+  zone_id = data.aws_route53_zone.manufourneau.zone_id
+  name    = "manufourneau.com"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cf_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.cf_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
 resource "aws_cloudfront_distribution" "cf_distribution" {
   origin {
     domain_name = aws_s3_bucket.static_react_bucket.bucket_regional_domain_name
@@ -64,10 +94,6 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
 
   price_class = "PriceClass_100"
 
-  viewer_certificate {
-    cloudfront_default_certificate = true
-  }
-
   retain_on_delete = true
 
   custom_error_response {
@@ -88,5 +114,11 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     geo_restriction {
       restriction_type = "none"
     }
+  }
+
+  aliases = ["www.manufourneau.com","manufourneau.com"]
+  viewer_certificate {
+    acm_certificate_arn = local.certificate_arn
+    ssl_support_method  = "sni-only"
   }
 }
