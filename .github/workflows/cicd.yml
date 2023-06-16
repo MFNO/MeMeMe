@@ -20,7 +20,7 @@ jobs:
         name: Copy Single File
         with:
           command: cp
-          source: /dist/index.html
+          source: ./dist/index.html
           destination: s3://me-me-me-bucket/index.html
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -32,7 +32,7 @@ jobs:
         name: Copy Folder
         with:
           command: cp
-          source: /dist/assets/
+          source: ./dist/assets/
           destination: s3://me-me-me-bucket/assets/
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
