@@ -1,6 +1,6 @@
 # Retrieve gitlab-user as a resource
 data "aws_iam_user" "user" {
-  user_name = "GitHub"
+  user_name = "GitHubAdmin"
 }
 
 # Create the policy to access the S3 bucket
