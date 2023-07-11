@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./App.css";
 import LI from "./LI.png";
 import GH from "./GH.png";
