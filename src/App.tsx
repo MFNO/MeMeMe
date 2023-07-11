@@ -5,7 +5,6 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { AiOutlineCloudDownload } from "react-icons/ai";
-import resume from "../resume.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -15,9 +14,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 function App() {
   const downloadPdf = () => {
     const link = document.createElement("a");
-    link.download = "./resume.pdf";
+    link.download =
+      "https://resume-manu.s3.amazonaws.com/manu-fourneau-resume.pdf";
 
-    link.href = resume;
+    link.href = "https://resume-manu.s3.amazonaws.com/manu-fourneau-resume.pdf";
 
     link.click();
   };
@@ -52,7 +52,11 @@ function App() {
             color={"grey"}
             onClick={downloadPdf}
           />
-          <Document file={"./resume.pdf"}>
+          <Document
+            file={
+              "https://resume-manu.s3.amazonaws.com/manu-fourneau-resume.pdf"
+            }
+          >
             <Page pageNumber={1} />
           </Document>
         </div>
