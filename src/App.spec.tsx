@@ -10,5 +10,5 @@ function toJson(component: renderer.ReactTestRenderer) {
 
 test("App renders fully", () => {
   const appComponent = toJson(renderer.create(<App />));
-  expect(appComponent.length).toBe(2);
+  expect(appComponent.length).toBe(3);
 });
