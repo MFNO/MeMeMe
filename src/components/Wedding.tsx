@@ -1,11 +1,13 @@
+import wedding from '../images/wedding.png';
 export default function Wedding() {
   return (
-    <div
+    <img
       style={{
-        minWidth: '550px',
+        maxWidth: '90vw',
+        maxHeight: '90vh',
+        objectFit: 'contain',
       }}
-    >
-      Ello
-    </div>
+      src={wedding}
+    />
   );
 }
