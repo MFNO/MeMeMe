@@ -2,6 +2,7 @@ import { AiOutlineCloudDownload } from 'react-icons/ai';
 import { pdfjs, Document, Page } from 'react-pdf';
 import LI from '../LI.png';
 import GH from '../GH.png';
+import styles from './Resume.module.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -19,7 +20,7 @@ export default function Resume() {
     link.click();
   };
   return (
-    <>
+    <div className={styles.content}>
       <div className="grid row">
         <div className="grid column">
           <h1>Socials</h1>
@@ -58,6 +59,6 @@ export default function Resume() {
           </Document>
         </div>
       </div>
-    </>
+    </div>
   );
 }
