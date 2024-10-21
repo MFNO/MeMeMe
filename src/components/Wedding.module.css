@@ -1,0 +1,41 @@
+.addCalendarBtn {
+  margin-top: 15px;
+  width: 200px;
+  display: flex;
+
+  align-items: center;
+  background-color: darkgray;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  a {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+  }
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  i {
+    color: white;
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: #4d4d4d; /* Darker blue on hover */
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(74, 75, 76, 0.5);
+  }
+}
