@@ -14,29 +14,29 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  a {
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    width: 100%;
-  }
-  a:hover {
-    color: white;
-    text-decoration: none;
-  }
+.addCalendarBtn:hover {
+  background-color: #4d4d4d; /* Darker blue on hover */
+}
 
-  i {
-    color: white;
-    font-size: 18px;
-  }
+.addCalendarBtn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(74, 75, 76, 0.5);
+}
 
-  &:hover {
-    background-color: #4d4d4d; /* Darker blue on hover */
-  }
+a {
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+}
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(74, 75, 76, 0.5);
-  }
+i {
+  color: white;
+  font-size: 18px;
 }
